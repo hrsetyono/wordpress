@@ -1,18 +1,19 @@
 {
-  "name": "johnpbloch/wordpress-core",
+  "name": "pixelstudio/wordpress",
   "description": "WordPress is web software you can use to create a beautiful website or blog.",
-  "keywords": [
-    "wordpress",
-    "blog",
-    "cms"
-  ],
+  "keywords": [ "wordpress", "blog", "cms" ],
   "type": "wordpress-core",
-  "homepage": "http://wordpress.org/",
+  "homepage": "https://github.com/hrsetyono/wordpress/",
   "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "WordPress Community",
       "homepage": "http://wordpress.org/about/"
+    },
+    {
+      "name": "Pixel Studio",
+      "email": "info@pixelstudio.id",
+      "homepage": "https://pixelstudio.id"
     }
   ],
   "support": {
@@ -23,7 +24,8 @@
     "source": "http://core.trac.wordpress.org/browser"
   },
   "require": {
-    "php": ">=5.3.2"
+    "php": ">=7.0.0",
+    "johnpbloch/wordpress-core-installer": "^1.0"
   },
   "provide": {
     "wordpress/core-implementation": "dev-master"

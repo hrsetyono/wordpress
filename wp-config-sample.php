@@ -77,7 +77,9 @@ $table_prefix = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', false );
+define('WP_DEBUG', false);
+define('DISALLOW_FILE_EDIT', true);
+define('WP_POST_REVISIONS', 5);
 
 /* That's all, stop editing! Happy publishing. */
 
