@@ -2,6 +2,11 @@
 
 This is a fork of Wordpress for use with Edje framework.
 
+**REQUIREMENTS**
+
+- PHP ~7.0
+- Composer ~1.8
+
 ## Installation
 
 1. Create a new empty directory.
@@ -24,11 +29,11 @@ Recommended setting in `composer.json`:
   ],
   "require": {
     "pixelstudio/wordpress": "~5.1",
-    "pixelstudio/edje-wp-library": "~2.0",
+    "pixelstudio/edje-wp-library": "~2.0.0",
     "pixelstudio/wp-sync-db": "~1.6",
     "pixelstudio/wp-sync-media": "~1.1",
     "wpackagist-plugin/jetpack": "*",
-    "wpackagist-plugin/timber-library": "~1.8",
+    "wpackagist-plugin/timber-library": "~1.9.0",
     "wpackagist-plugin/autodescription": "*",
     "wpackagist-plugin/contact-form-7": "*",
     
@@ -45,7 +50,7 @@ If you want a WooCommerce site, add these packages:
 ```json
 "wpackagist-plugin/woocommerce": "~3.5",
 "pixelstudio/edje-wc-library": "~2.0",
-"wpackagist-theme/storefront": "~2.4"
+"wpackagist-theme/storefront": "*"
 ```
 
 ## Changes to Core

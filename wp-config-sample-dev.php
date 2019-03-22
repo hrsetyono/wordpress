@@ -81,6 +81,7 @@ define('WP_DEBUG', true);
 define('DISALLOW_FILE_EDIT', true);
 define('WP_POST_REVISIONS', 5);
 define('JETPACK_DEV_DEBUG', true);
+define('EDJE', true);
 
 /* That's all, stop editing! Happy publishing. */
 
