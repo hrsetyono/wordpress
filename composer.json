@@ -27,6 +27,9 @@
     "php": ">=7.0.0",
     "johnpbloch/wordpress-core-installer": "^1.0"
   },
+  "extra": {
+	  "wordpress-install-dir": "move-inside-to-root--except-composer-json"
+  },
   "provide": {
     "wordpress/core-implementation": "dev-master"
   }
