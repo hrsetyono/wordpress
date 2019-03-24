@@ -362,7 +362,7 @@ function wp_print_theme_file_tree( $tree, $level = 2, $size = 1, $index = 1 ) {
 				aria-posinset="<?php echo esc_attr( $index ); ?>">
 				<?php
 				$file_description = esc_html( get_file_description( $filename ) );
-				if ( $file_description !== $filename && wp_basename( $filename ) !== $file_description ) {
+				if ( $file_description !== $filename && basename( $filename ) !== $file_description ) {
 					$file_description .= '<br /><span class="nonessential">(' . esc_html( $filename ) . ')</span>';
 				}
 
@@ -1082,6 +1082,8 @@ function wp_refresh_post_nonces( $response, $data, $screen_id ) {
 function wp_refresh_heartbeat_nonces( $response ) {
 	// Refresh the Rest API nonce.
 	$response['rest_nonce'] = wp_create_nonce( 'wp_rest' );
+	// TEMPORARY: Compat with api-fetch library
+	$response['rest-nonce'] = $response['rest_nonce'];
 
 	// Refresh the Heartbeat nonce.
 	$response['heartbeat_nonce'] = wp_create_nonce( 'heartbeat-nonce' );
@@ -1642,7 +1644,7 @@ final class WP_Privacy_Policy_Content {
 			/* translators: 1: Privacy Policy guide URL, 2: additional link attributes, 3: accessibility text */
 			printf(
 				__( 'Need help putting together your new Privacy Policy page? <a href="%1$s" %2$s>Check out our guide%3$s</a> for recommendations on what content to include, along with policies suggested by your plugins and theme.' ),
-				esc_url( admin_url( 'tools.php?wp-privacy-policy-guide=1' ) ),
+				admin_url( 'tools.php?wp-privacy-policy-guide=1' ),
 				'target="_blank"',
 				sprintf(
 					'<span class="screen-reader-text"> %s</span>',

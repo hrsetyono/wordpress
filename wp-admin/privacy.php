@@ -156,19 +156,11 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 			<?php
 
 			if ( 'publish' === get_post_status( $privacy_policy_page_id ) ) {
-				printf(
-					/* translators: 1: URL to edit Privacy Policy page, 2: URL to view Privacy Policy page */
-					__( '<a href="%1$s">Edit</a> or <a href="%2$s">view</a> your Privacy Policy page content.' ),
-					esc_url( $edit_href ),
-					esc_url( $view_href )
-				);
+				/* translators: 1: URL to edit page, 2: URL to view page */
+				printf( __( '<a href="%1$s">Edit</a> or <a href="%2$s">view</a> your Privacy Policy page content.' ), $edit_href, $view_href );
 			} else {
-				printf(
-					/* translators: 1: URL to edit Privacy Policy page, 2: URL to preview Privacy Policy page */
-					__( '<a href="%1$s">Edit</a> or <a href="%2$s">preview</a> your Privacy Policy page content.' ),
-					esc_url( $edit_href ),
-					esc_url( $view_href )
-				);
+				/* translators: 1: URL to edit page, 2: URL to preview page */
+				printf( __( '<a href="%1$s">Edit</a> or <a href="%2$s">preview</a> your Privacy Policy page content.' ), $edit_href, $view_href );
 			}
 
 			?>
@@ -182,7 +174,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		printf(
 			/* translators: 1: Privacy Policy guide URL, 2: additional link attributes, 3: accessibility text */
 			__( 'Need help putting together your new Privacy Policy page? <a href="%1$s" %2$s>Check out our guide%3$s</a> for recommendations on what content to include, along with policies suggested by your plugins and theme.' ),
-			esc_url( admin_url( 'tools.php?wp-privacy-policy-guide=1' ) ),
+			admin_url( 'tools.php?wp-privacy-policy-guide' ),
 			'',
 			''
 		);

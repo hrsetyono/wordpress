@@ -3678,17 +3678,14 @@ function human_time_diff( $from, $to = '' ) {
  * The ' [&hellip;]' string can be modified by plugins/themes using the {@see 'excerpt_more'} filter
  *
  * @since 1.5.0
- * @since 5.2.0 Added the `$post` parameter.
  *
- * @param string             $text Optional. The excerpt. If set to empty, an excerpt is generated.
- * @param WP_Post|object|int $post Optional. WP_Post instance or Post ID/object. Default is null.
+ * @param string $text Optional. The excerpt. If set to empty, an excerpt is generated.
  * @return string The excerpt.
  */
-function wp_trim_excerpt( $text = '', $post = null ) {
+function wp_trim_excerpt( $text = '' ) {
 	$raw_excerpt = $text;
 	if ( '' == $text ) {
-		$post = get_post( $post );
-		$text = get_the_content( '', false, $post );
+		$text = get_the_content( '' );
 
 		$text = strip_shortcodes( $text );
 		$text = excerpt_remove_blocks( $text );

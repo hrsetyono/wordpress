@@ -82,12 +82,12 @@ this["wp"] = this["wp"] || {}; this["wp"]["dom"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 379);
+/******/ 	return __webpack_require__(__webpack_require__.s = 324);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 17:
+/***/ 19:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -103,7 +103,7 @@ function _arrayWithoutHoles(arr) {
   }
 }
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
-var iterableToArray = __webpack_require__(34);
+var iterableToArray = __webpack_require__(33);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
 function _nonIterableSpread() {
@@ -127,18 +127,7 @@ function _toConsumableArray(arr) {
 
 /***/ }),
 
-/***/ 34:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _iterableToArray; });
-function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-}
-
-/***/ }),
-
-/***/ 379:
+/***/ 324:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -152,7 +141,7 @@ __webpack_require__.d(tabbable_namespaceObject, "isTabbableIndex", function() { 
 __webpack_require__.d(tabbable_namespaceObject, "find", function() { return tabbable_find; });
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(17);
+var toConsumableArray = __webpack_require__(19);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/focusable.js
 
@@ -235,18 +224,10 @@ function find(context) {
   });
 }
 
-// EXTERNAL MODULE: external "lodash"
-var external_lodash_ = __webpack_require__(2);
-
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/tabbable.js
-/**
- * External dependencies
- */
-
 /**
  * Internal dependencies
  */
-
 
 /**
  * Returns the tab index of the given element. In contrast with the tabIndex
@@ -278,47 +259,6 @@ function isTabbableIndex(element) {
   return getTabIndex(element) !== -1;
 }
 /**
- * Returns a stateful reducer function which constructs a filtered array of
- * tabbable elements, where at most one radio input is selected for a given
- * name, giving priority to checked input, falling back to the first
- * encountered.
- *
- * @return {Function} Radio group collapse reducer.
- */
-
-function createStatefulCollapseRadioGroup() {
-  var CHOSEN_RADIO_BY_NAME = {};
-  return function collapseRadioGroup(result, element) {
-    var nodeName = element.nodeName,
-        type = element.type,
-        checked = element.checked,
-        name = element.name; // For all non-radio tabbables, construct to array by concatenating.
-
-    if (nodeName !== 'INPUT' || type !== 'radio' || !name) {
-      return result.concat(element);
-    }
-
-    var hasChosen = CHOSEN_RADIO_BY_NAME.hasOwnProperty(name); // Omit by skipping concatenation if the radio element is not chosen.
-
-    var isChosen = checked || !hasChosen;
-
-    if (!isChosen) {
-      return result;
-    } // At this point, if there had been a chosen element, the current
-    // element is checked and should take priority. Retroactively remove
-    // the element which had previously been considered the chosen one.
-
-
-    if (hasChosen) {
-      var hadChosenElement = CHOSEN_RADIO_BY_NAME[name];
-      result = Object(external_lodash_["without"])(result, hadChosenElement);
-    }
-
-    CHOSEN_RADIO_BY_NAME[name] = element;
-    return result.concat(element);
-  };
-}
-/**
  * An array map callback, returning an object with the element value and its
  * array index location as properties. This is used to emulate a proper stable
  * sort where equal tabIndex should be left in order of their occurrence in the
@@ -329,7 +269,6 @@ function createStatefulCollapseRadioGroup() {
  *
  * @return {Object} Mapped object with element, index.
  */
-
 
 function mapElementToObjectTabbable(element, index) {
   return {
@@ -374,8 +313,11 @@ function compareObjectTabbables(a, b) {
 }
 
 function tabbable_find(context) {
-  return find(context).filter(isTabbableIndex).map(mapElementToObjectTabbable).sort(compareObjectTabbables).map(mapObjectTabbableToElement).reduce(createStatefulCollapseRadioGroup(), []);
+  return find(context).filter(isTabbableIndex).map(mapElementToObjectTabbable).sort(compareObjectTabbables).map(mapObjectTabbableToElement);
 }
+
+// EXTERNAL MODULE: external "lodash"
+var external_lodash_ = __webpack_require__(2);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom.js
 /**
@@ -503,24 +445,20 @@ function isHorizontalEdge(container, isReverse) {
   if (offset !== extentOffset) {
     return false;
   } // If confirmed to be at extent, traverse up through DOM, verifying that
-  // the node is at first or last child for reverse or forward respectively
-  // (ignoring empty text nodes). Continue until container is reached.
+  // the node is at first or last child for reverse or forward respectively.
+  // Continue until container is reached.
 
 
-  var order = isReverse ? 'previous' : 'next';
+  var order = isReverse ? 'first' : 'last';
 
   while (node !== container) {
-    var next = node["".concat(order, "Sibling")]; // Skip over empty text nodes.
+    var parentNode = node.parentNode;
 
-    while (next && next.nodeType === TEXT_NODE && next.data === '') {
-      next = next["".concat(order, "Sibling")];
-    }
-
-    if (next) {
+    if (parentNode["".concat(order, "Child")] !== node) {
       return false;
     }
 
-    node = node.parentNode;
+    node = parentNode;
   } // If reached, range is assumed to be at edge.
 
 
@@ -544,13 +482,7 @@ function isVerticalEdge(container, isReverse) {
     return true;
   }
 
-  var selection = window.getSelection(); // Only consider the selection at the edge if the direction is towards the
-  // edge.
-
-  if (!selection.isCollapsed && isSelectionForward(selection) === isReverse) {
-    return false;
-  }
-
+  var selection = window.getSelection();
   var range = selection.rangeCount ? selection.getRangeAt(0) : null;
 
   if (!range) {
@@ -563,15 +495,8 @@ function isVerticalEdge(container, isReverse) {
     return false;
   }
 
-  var editableRect = container.getBoundingClientRect(); // Calculate a buffer that is half the line height. In some browsers, the
-  // selection rectangle may not fill the entire height of the line, so we add
-  // half the line height to the selection rectangle to ensure that it is well
-  // over its line boundary.
-
-  var _window$getComputedSt = window.getComputedStyle(container),
-      lineHeight = _window$getComputedSt.lineHeight;
-
-  var buffer = parseInt(lineHeight, 10) / 2; // Too low.
+  var buffer = rangeRect.height / 2;
+  var editableRect = container.getBoundingClientRect(); // Too low.
 
   if (isReverse && rangeRect.top - buffer > editableRect.top) {
     return false;
@@ -909,8 +834,8 @@ function getScrollContainer(node) {
 
   if (node.scrollHeight > node.clientHeight) {
     // ...except when overflow is defined to be hidden or visible
-    var _window$getComputedSt2 = window.getComputedStyle(node),
-        overflowY = _window$getComputedSt2.overflowY;
+    var _window$getComputedSt = window.getComputedStyle(node),
+        overflowY = _window$getComputedSt.overflowY;
 
     if (/(auto|scroll)/.test(overflowY)) {
       return node;
@@ -1061,17 +986,23 @@ function wrap(newNode, referenceNode) {
  */
 
 
-/**
- * Object grouping `focusable` and `tabbable` utils
- * under the keys with the same name.
- */
-
 var build_module_focus = {
   focusable: focusable_namespaceObject,
   tabbable: tabbable_namespaceObject
 };
 
 
+
+/***/ }),
+
+/***/ 33:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _iterableToArray; });
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
 
 /***/ })
 

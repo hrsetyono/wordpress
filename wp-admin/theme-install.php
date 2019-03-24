@@ -335,12 +335,7 @@ if ( $tab ) {
 						<# if ( data.rating ) { #>
 							<div class="theme-rating">
 								{{{ data.stars }}}
-								<a class="num-ratings" href="{{ data.reviews_url }}">
-									<?php
-									/* translators: %s: number of ratings */
-									echo sprintf( __( '(%s ratings)' ), '{{ data.num_ratings }}' );
-									?>
-								</a>
+								<span class="num-ratings">({{ data.num_ratings }})</span>
 							</div>
 						<# } else { #>
 							<span class="no-rating"><?php _e( 'This theme has not been rated yet.' ); ?></span>

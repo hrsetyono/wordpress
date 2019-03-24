@@ -769,8 +769,8 @@ function install_plugin_information() {
 				' ' . __( '<a href="%s" target="_blank">Click here to learn more about updating PHP</a>.' ),
 				esc_url( wp_get_update_php_url() )
 			);
-
-			wp_update_php_annotation( '</p><p><em>', '</em>' );
+			echo '</p>';
+			wp_update_php_annotation();
 		} else {
 			echo '</p>';
 		}
@@ -827,14 +827,7 @@ function install_plugin_information() {
 				break;
 			case 'update_available':
 				if ( $status['url'] ) {
-					if ( $compatible_php ) {
-						echo '<a data-slug="' . esc_attr( $api->slug ) . '" data-plugin="' . esc_attr( $status['file'] ) . '" id="plugin_update_from_iframe" class="button button-primary right" href="' . $status['url'] . '" target="_parent">' . __( 'Install Update Now' ) . '</a>';
-					} else {
-						printf(
-							'<button type="button" class="button button-primary button-disabled right" disabled="disabled">%s</button>',
-							_x( 'Cannot Update', 'plugin' )
-						);
-					}
+					echo '<a data-slug="' . esc_attr( $api->slug ) . '" data-plugin="' . esc_attr( $status['file'] ) . '" id="plugin_update_from_iframe" class="button button-primary right" href="' . $status['url'] . '" target="_parent">' . __( 'Install Update Now' ) . '</a>';
 				}
 				break;
 			case 'newer_installed':

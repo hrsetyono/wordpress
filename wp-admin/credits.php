@@ -24,12 +24,12 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 
 <div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
-<nav class="nav-tab-wrapper wp-clearfix" aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
+<h2 class="nav-tab-wrapper wp-clearfix">
 	<a href="about.php" class="nav-tab"><?php _e( 'What&#8217;s New' ); ?></a>
 	<a href="credits.php" class="nav-tab nav-tab-active"><?php _e( 'Credits' ); ?></a>
 	<a href="freedoms.php" class="nav-tab"><?php _e( 'Freedoms' ); ?></a>
 	<a href="freedoms.php?privacy-notice" class="nav-tab"><?php _e( 'Privacy' ); ?></a>
-</nav>
+</h2>
 
 <div class="about-wrap-content">
 <?php
@@ -72,7 +72,7 @@ foreach ( $credits['groups'] as $group_slug => $group_data ) {
 			$title = translate( $group_data['name'] );
 		}
 
-		echo '<h2 class="wp-people-group">' . esc_html( $title ) . "</h2>\n";
+		echo '<h3 class="wp-people-group">' . esc_html( $title ) . "</h3>\n";
 	}
 
 	if ( ! empty( $group_data['shuffle'] ) ) {

@@ -32,7 +32,7 @@ do_action( 'rss_tag_pre', 'atom' );
 
 	<updated>
 	<?php
-		$date = get_last_build_date();
+		$date = get_lastpostmodified( 'GMT' );
 		echo $date ? mysql2date( 'Y-m-d\TH:i:s\Z', $date, false ) : date( 'Y-m-d\TH:i:s\Z' );
 	?>
 	</updated>

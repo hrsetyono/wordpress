@@ -1,21 +1,19 @@
-# WordPress with Composer
+# WordPress w/ Composer
 
-This is a fork of Wordpress for use with Edje framework.
+Do you know you can install WordPress and its plugins using command-line?
+
+This fork of WordPress is slightly customized so it works with Composer and our own library: **Edje**.
 
 **REQUIREMENTS**
 
 - PHP ~7.0
 - Composer ~1.8
 
-## Installation
+## Composer.json
 
-1. Create a new empty directory.
-1. Inside, create a new file `composer.json` - It contains the list of plugins you want to use in your Wordpress site. You can find the recommended setup below.
-1. Run the command `composer update` inside the directory - It will take few minutes to finish downloading.
-1. Cut all the files inside the newly generated `/wp-core` directory to root - Except the JSON file.
-1. Done!
+Below is the Composer setup we typically use for our projects:
 
-Recommended setting in `composer.json`:
+It includes our [Starter theme](https://github.com/hrsetyono/edje-wp-theme) and [Custom-made Library](https://github.com/hrsetyono/edje-wp-library) that is made to work with [Timber](https://timber.github.io/docs/).
 
 ```json
 {
@@ -44,6 +42,22 @@ Recommended setting in `composer.json`:
   "autoload": { "psr-0": { "Acme": "src/" } }
 }
 ```
+
+## Installation
+
+1. Create a new empty directory and put the **composer.json** file in it.
+1. Run the command `composer update` inside the directory - It will take few minutes to finish downloading.
+
+**Project Setup**
+
+1. Enter `/wp-core ...` and move all the files to root except the JSON file.
+1. Enter `/wp-content/themes` and rename `edje-wp-theme` to your project name.
+1. Remove
+1. Done!
+
+Our recommended `composer.json`:
+
+
 
 If you want a WooCommerce site, add these packages:
 

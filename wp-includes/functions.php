@@ -2096,7 +2096,7 @@ function wp_upload_dir( $time = null, $create_dir = true, $refresh_cache = false
 				if ( 0 === strpos( $uploads['basedir'], ABSPATH ) ) {
 					$error_path = str_replace( ABSPATH, '', $uploads['basedir'] ) . $uploads['subdir'];
 				} else {
-					$error_path = wp_basename( $uploads['basedir'] ) . $uploads['subdir'];
+					$error_path = basename( $uploads['basedir'] ) . $uploads['subdir'];
 				}
 
 				$uploads['error'] = sprintf(
@@ -2381,7 +2381,7 @@ function wp_upload_bits( $name, $deprecated, $bits, $time = null ) {
 		if ( 0 === strpos( $upload['basedir'], ABSPATH ) ) {
 			$error_path = str_replace( ABSPATH, '', $upload['basedir'] ) . $upload['subdir'];
 		} else {
-			$error_path = wp_basename( $upload['basedir'] ) . $upload['subdir'];
+			$error_path = basename( $upload['basedir'] ) . $upload['subdir'];
 		}
 
 		$message = sprintf(
@@ -2921,7 +2921,7 @@ function wp_nonce_ays( $action ) {
 }
 
 /**
- * Kills WordPress execution and displays HTML page with an error message.
+ * Kill WordPress execution and display HTML message with error message.
  *
  * This function complements the `die()` PHP function. The difference is that
  * HTML will be displayed to the user. It is recommended to use this function
@@ -3013,10 +3013,10 @@ function wp_die( $message = '', $title = '', $args = array() ) {
 }
 
 /**
- * Kills WordPress execution and displays HTML page with an error message.
+ * Kills WordPress execution and display HTML message with error message.
  *
- * This is the default handler for wp_die(). If you want a custom one,
- * you can override this using the {@see 'wp_die_handler'} filter in wp_die().
+ * This is the default handler for wp_die if you want a custom one for your
+ * site then you can overload using the {@see 'wp_die_handler'} filter in wp_die().
  *
  * @since 3.0.0
  * @access private
@@ -3058,9 +3058,9 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 
 	if ( ! did_action( 'admin_head' ) ) :
 		if ( ! headers_sent() ) {
-			header( 'Content-Type: text/html; charset=utf-8' );
 			status_header( $r['response'] );
 			nocache_headers();
+			header( 'Content-Type: text/html; charset=utf-8' );
 		}
 
 		$text_direction = $r['text_direction'];
@@ -3092,8 +3092,8 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 			margin: 2em auto;
 			padding: 1em 2em;
 			max-width: 700px;
-			-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
+			-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.13);
+			box-shadow: 0 1px 3px rgba(0,0,0,0.13);
 		}
 		h1 {
 			border-bottom: 1px solid #dadada;
@@ -3130,10 +3130,10 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 			color: #124964;
 			-webkit-box-shadow:
 				0 0 0 1px #5b9dd9,
-				0 0 2px 1px rgba(30, 140, 190, 0.8);
+				0 0 2px 1px rgba(30, 140, 190, .8);
 			box-shadow:
 				0 0 0 1px #5b9dd9,
-				0 0 2px 1px rgba(30, 140, 190, 0.8);
+				0 0 2px 1px rgba(30, 140, 190, .8);
 			outline: none;
 		}
 		.button {
@@ -3174,18 +3174,18 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 			color: #23282d;
 		}
 
-		.button:focus {
+		.button:focus  {
 			border-color: #5b9dd9;
-			-webkit-box-shadow: 0 0 3px rgba(0, 115, 170, 0.8);
-			box-shadow: 0 0 3px rgba(0, 115, 170, 0.8);
+			-webkit-box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
+			box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 			outline: none;
 		}
 
 		.button:active {
 			background: #eee;
 			border-color: #999;
-			 -webkit-box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
-			 box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
+			 -webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+			 box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 			 -webkit-transform: translateY(1px);
 			 -ms-transform: translateY(1px);
 			 transform: translateY(1px);
@@ -3210,9 +3210,9 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 }
 
 /**
- * Kills WordPress execution and displays JSON response with an error message.
+ * Kill WordPress execution and display JSON message with error message.
  *
- * This is the handler for wp_die() when processing JSON requests.
+ * This is the handler for wp_die when processing JSON requests.
  *
  * @since 5.1.0
  * @access private
@@ -3238,7 +3238,6 @@ function _json_wp_die_handler( $message, $title = '', $args = array() ) {
 		if ( null !== $r['response'] ) {
 			status_header( $r['response'] );
 		}
-		nocache_headers();
 	}
 
 	echo wp_json_encode( $data );
@@ -3248,9 +3247,9 @@ function _json_wp_die_handler( $message, $title = '', $args = array() ) {
 }
 
 /**
- * Kills WordPress execution and displays XML response with an error message.
+ * Kill WordPress execution and display XML message with error message.
  *
- * This is the handler for wp_die() when processing XMLRPC requests.
+ * This is the handler for wp_die when processing XMLRPC requests.
  *
  * @since 3.2.0
  * @access private
@@ -3266,10 +3265,6 @@ function _xmlrpc_wp_die_handler( $message, $title = '', $args = array() ) {
 
 	list( $message, $title, $r ) = _wp_die_process_input( $message, $title, $args );
 
-	if ( ! headers_sent() ) {
-		nocache_headers();
-	}
-
 	if ( $wp_xmlrpc_server ) {
 		$error = new IXR_Error( $r['response'], $message );
 		$wp_xmlrpc_server->output( $error->getXml() );
@@ -3280,9 +3275,9 @@ function _xmlrpc_wp_die_handler( $message, $title = '', $args = array() ) {
 }
 
 /**
- * Kills WordPress execution and displays Ajax response with an error message.
+ * Kill WordPress ajax execution.
  *
- * This is the handler for wp_die() when processing Ajax requests.
+ * This is the handler for wp_die when processing Ajax requests.
  *
  * @since 3.4.0
  * @access private
@@ -3300,12 +3295,9 @@ function _ajax_wp_die_handler( $message, $title = '', $args = array() ) {
 
 	list( $message, $title, $r ) = _wp_die_process_input( $message, $title, $args );
 
-	if ( ! headers_sent() ) {
-		// This is intentional. For backward-compatibility, support passing null here.
-		if ( null !== $args['response'] ) {
-			status_header( $r['response'] );
-		}
-		nocache_headers();
+	// This is intentional. For backward-compatibility, support passing null here.
+	if ( ! headers_sent() && null !== $args['response'] ) {
+		status_header( $r['response'] );
 	}
 
 	if ( is_scalar( $message ) ) {
@@ -3322,9 +3314,9 @@ function _ajax_wp_die_handler( $message, $title = '', $args = array() ) {
 }
 
 /**
- * Kills WordPress execution and displays an error message.
+ * Kill WordPress execution.
  *
- * This is the handler for wp_die() when processing APP requests.
+ * This is the handler for wp_die when processing APP requests.
  *
  * @since 3.4.0
  * @since 5.1.0 Added the $title and $args parameters.
@@ -3350,7 +3342,7 @@ function _scalar_wp_die_handler( $message = '', $title = '', $args = array() ) {
 }
 
 /**
- * Processes arguments passed to wp_die() consistently for its handlers.
+ * Processes arguments passed to {@see wp_die()} consistently for its handlers.
  *
  * @since 5.1.0
  * @access private
@@ -4256,7 +4248,28 @@ function dead_db() {
 	}
 
 	// Otherwise, be terse.
-	wp_die( '<h1>' . __( 'Error establishing a database connection' ) . '</h1>', __( 'Database Error' ) );
+	status_header( 500 );
+	nocache_headers();
+	header( 'Content-Type: text/html; charset=utf-8' );
+
+	$dir_attr = '';
+	if ( is_rtl() ) {
+		$dir_attr = ' dir="rtl"';
+	}
+	?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"<?php echo $dir_attr; ?>>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><?php _e( 'Database Error' ); ?></title>
+
+</head>
+<body>
+	<h1><?php _e( 'Error establishing a database connection' ); ?></h1>
+</body>
+</html>
+	<?php
+	die();
 }
 
 /**
@@ -6712,12 +6725,9 @@ function wp_schedule_delete_old_privacy_export_files() {
  * @since 4.9.6
  */
 function wp_privacy_delete_old_export_files() {
-	$exports_dir = wp_privacy_exports_dir();
-	if ( ! is_dir( $exports_dir ) ) {
-		return;
-	}
-
 	require_once( ABSPATH . 'wp-admin/includes/file.php' );
+
+	$exports_dir  = wp_privacy_exports_dir();
 	$export_files = list_files( $exports_dir, 100, array( 'index.html' ) );
 
 	/**
@@ -6803,42 +6813,22 @@ function wp_get_default_update_php_url() {
  * annotation if the web host has altered the default "Update PHP" page URL.
  *
  * @since 5.1.0
- * @since 5.2.0 Added the `$before` and `$after` parameters.
- *
- * @param string $before Markup to output before the annotation. Default `<p class="description">`.
- * @param string $after  Markup to output after the annotation. Default `</p>`.
  */
-function wp_update_php_annotation( $before = '<p class="description">', $after = '</p>' ) {
-	$annotation = wp_get_update_php_annotation();
-
-	echo $before . $annotation . $after;
-}
-
-/**
- * Returns the default annotation for the web hosting altering the "Update PHP" page URL.
- *
- * This function is to be used after {@see wp_get_update_php_url()} to return a consistent
- * annotation if the web host has altered the default "Update PHP" page URL.
- *
- * @since 5.2.0
- *
- * @return string $message Update PHP page annotation. An empty string if no custom URLs are provided.
- */
-function wp_get_update_php_annotation() {
+function wp_update_php_annotation() {
 	$update_url  = wp_get_update_php_url();
 	$default_url = wp_get_default_update_php_url();
 
 	if ( $update_url === $default_url ) {
-		return '';
+		return;
 	}
 
-	$annotation = sprintf(
+	echo '<p class="description">';
+	printf(
 		/* translators: %s: default Update PHP page URL */
 		__( 'This resource is provided by your web host, and is specific to your site. For more information, <a href="%s" target="_blank">see the official WordPress documentation</a>.' ),
 		esc_url( $default_url )
 	);
-
-	return $annotation;
+	echo'</p>';
 }
 
 /**
@@ -6896,30 +6886,4 @@ function wp_direct_php_update_button() {
 		__( '(opens in a new tab)' )
 	);
 	echo '</p>';
-}
-
-/**
- * Checks compatibility with the current WordPress version.
- *
- * @since 5.2.0
- *
- * @param string $required Minimum required WordPress version.
- * @return bool True if required version is compatible or empty, false if not.
- */
-function wp_is_wp_compatible( $required ) {
-	$wp_version = get_bloginfo( 'version' );
-
-	return empty( $required ) || version_compare( $wp_version, $required, '>=' );
-}
-
-/**
- * Checks compatibility with the current PHP version.
- *
- * @since 5.2.0
- *
- * @param string $required Minimum required PHP version.
- * @return bool True if required version is compatible or empty, false if not.
- */
-function wp_is_php_compatible( $required ) {
-	return empty( $required ) || version_compare( phpversion(), $required, '>=' );
 }

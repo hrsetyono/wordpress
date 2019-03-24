@@ -411,9 +411,7 @@ abstract class WP_Widget_Media extends WP_Widget {
 			</p>
 			<div class="media-widget-preview <?php echo esc_attr( $this->id_base ); ?>">
 				<div class="attachment-media-view">
-					<button type="button" class="select-media button-add-media not-selected">
-						<?php echo esc_html( $this->l10n['add_media'] ); ?>
-					</button>
+					<div class="placeholder"><?php echo esc_html( $this->l10n['no_media_selected'] ); ?></div>
 				</div>
 			</div>
 			<p class="media-widget-buttons">
@@ -425,6 +423,9 @@ abstract class WP_Widget_Media extends WP_Widget {
 					<?php echo esc_html( $this->l10n['replace_media'] ); ?>
 				</button>
 			<?php endif; ?>
+				<button type="button" class="button select-media not-selected">
+					<?php echo esc_html( $this->l10n['add_media'] ); ?>
+				</button>
 			</p>
 			<div class="media-widget-fields">
 			</div>
