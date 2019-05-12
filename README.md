@@ -35,7 +35,7 @@ It includes our [Starter theme](https://github.com/hrsetyono/edje-wp-theme) and 
     "wpackagist-plugin/autodescription": "*",
     "wpackagist-plugin/contact-form-7": "*",
     
-    "pixelstudio/edje-wp-theme": "~1.0",
+    "pixelstudio/edje-wp-theme": "~4.0",
     "wpackagist-theme/twentynineteen": "*"
   },
   "require-dev": {},

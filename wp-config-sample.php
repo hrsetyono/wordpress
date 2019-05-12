@@ -79,7 +79,7 @@ $table_prefix = 'wp_';
  */
 define('WP_DEBUG', false);
 define('DISALLOW_FILE_EDIT', true);
-define('WP_POST_REVISIONS', 5);
+define('WP_POST_REVISIONS', 10);
 define('EDJE', true);
 
 /* That's all, stop editing! Happy publishing. */

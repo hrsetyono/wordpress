@@ -79,7 +79,7 @@ $table_prefix = 'wp_';
  */
 define('WP_DEBUG', true);
 define('DISALLOW_FILE_EDIT', true);
-define('WP_POST_REVISIONS', 5);
+define('WP_POST_REVISIONS', 10);
 define('JETPACK_DEV_DEBUG', true);
 define('EDJE', true);
 
