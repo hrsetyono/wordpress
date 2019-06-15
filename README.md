@@ -1,76 +1,31 @@
-# WordPress w/ Composer
+# WordPress with Composer + WP CLI
 
-Do you know you can install WordPress and its plugins using command-line?
+We will explain how to download and install WordPress with 1 simple command.
 
-This fork of WordPress is slightly customized so it works with Composer and our own library: **Edje**.
-
-**REQUIREMENTS**
-
-- PHP ~7.0
-- Composer ~1.8
-
-## Composer.json
-
-Below is the Composer setup we typically use for our projects:
-
-It includes our [Starter theme](https://github.com/hrsetyono/edje-wp-theme) and [Custom-made Library](https://github.com/hrsetyono/edje-wp-library) that is made to work with [Timber](https://timber.github.io/docs/).
-
-```json
-{
-  "name": "your-name/new-site",
-  "description": "Run the command `composer update` to download WordPress and specified plugins",
-  "repositories":[
-    { "type":"composer", "url":"https://wpackagist.org" }
-  ],
-  "authors": [
-    { "name": "Your Name", "email": "your-email@example.com", "homepage": "https://your-site.com" }
-  ],
-  "require": {
-    "pixelstudio/wordpress": "~5.1",
-    "pixelstudio/edje-wp-library": "~2.0.0",
-    "pixelstudio/wp-sync-db": "~1.6",
-    "pixelstudio/wp-sync-media": "~1.1",
-    "wpackagist-plugin/jetpack": "*",
-    "wpackagist-plugin/timber-library": "~1.9.0",
-    "wpackagist-plugin/autodescription": "*",
-    "wpackagist-plugin/contact-form-7": "*",
-    
-    "pixelstudio/edje-wp-theme": "~4.0",
-    "wpackagist-theme/twentynineteen": "*"
-  },
-  "require-dev": {},
-  "autoload": { "psr-0": { "Acme": "src/" } }
-}
+```
+composer init-wp
 ```
 
-## Installation
+## One-time Setup
 
-1. Create a new empty directory and put the **composer.json** file in it.
-1. Run the command `composer update` inside the directory - It will take few minutes to finish downloading.
+We assume you are on Windows 10 machine and already running any PHP localhost like [WAMP 32-bit](http://www.wampserver.com/en/) or XAMPP.
 
-**Project Setup**
+1. Install [Git](https://git-scm.com/downloads).
+1. Install [Composer 1.8](https://getcomposer.org/download/).
+1. Install [WP-CLI 2.2](https://github.com/hrsetyono/wordpress/wiki/Installing-WP-CLI-on-Windows-10).
+1. Go to `C:\Users\yourname\.wp-cli` and put `config.yml` there.
+1. Edit the value in `config.yml` to fit your environment.
 
-1. Enter `/wp-core ...` and move all the files to root except the JSON file.
-1. Enter `/wp-content/themes` and rename `edje-wp-theme` to your project name.
-1. Remove
-1. Done!
+## Project Setup
 
-Our recommended `composer.json`:
+1. Create a new directory for your project and put `composer.json` and `wp-cli.yml` inside.
 
+1. Edit the value in `wp-cli.yml` to fit your project.
 
+1. Run the command `composer init-wp`.
 
-If you want a WooCommerce site, add these packages:
+## Live Server Setup (Optional)
 
-```json
-"wpackagist-plugin/woocommerce": "~3.5",
-"pixelstudio/edje-wc-library": "~2.0",
-"wpackagist-theme/storefront": "*"
-```
+This allows you to install and migrate WordPress to your live server.
 
-## Changes to Core
-
-- Removed `/wp-content` directory so it won't override existing one.
-- Changed some constants in `wp-config-sample.php`. DISALLOW_FILE_EDIT to true and WP_POST_REVISIONS to 5.
-- Added `wp-config-sample-dev.php` for use in localhost environment. You need to rename it to `wp-config-sample.php`, removing the existing one first.
-- Removed `readme.html`.
-- Removed `license.txt`.
+**Coming Soon**

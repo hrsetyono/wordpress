@@ -1,0 +1,12 @@
+# Database settings
+config create:
+  dbname: your_site
+
+# WP settings
+core install:
+  url: your-site.test
+  title: Your Site
+
+# Remote access to your server using SSH
+@live:
+  ssh: username@your-server.com~/path/to/your-project

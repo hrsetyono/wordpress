@@ -1,0 +1,21 @@
+# Database and wp-config.php settings
+config create:
+  dbuser: root
+  dbpass: my-db-password
+  extra-php: |
+    define( 'WP_DEBUG', true );
+    define( 'WP_POST_REVISIONS', 10 );
+    define( 'EDJE', true );
+    define( 'DISALLOW_FILE_EDIT', true );
+    define( 'JETPACK_DEV_DEBUG', true );
+
+# WP-Admin credentials
+core install:
+  admin_user: my-wp-username
+  admin_password: my-wp-password
+  admin_email: my-wp-email@gmail.com
+
+# Ignore this
+disabled_commands:
+  - db drop
+  - db reset
