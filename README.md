@@ -1,31 +1,69 @@
 # WordPress with Composer + WP CLI
 
-We will explain how to download and install WordPress with 1 simple command.
+Learn how to download and install WordPress with 1 simple command.
 
-```
-composer init-wp
-```
+This repo contains 3 files:
 
-## One-time Setup
+- `composer.json` and `wp-cli.local.yml` are the local configs. Put this in the root folder of your project.
 
-We assume you are on Windows 10 machine and already running any PHP localhost like [WAMP 32-bit](http://www.wampserver.com/en/) or XAMPP.
+- `config.yml` is the global config. You will learn where to place it in the guide below.
 
-1. Install [Git](https://git-scm.com/downloads).
-1. Install [Composer 1.8](https://getcomposer.org/download/).
-1. Install [WP-CLI 2.2](https://github.com/hrsetyono/wordpress/wiki/Installing-WP-CLI-on-Windows-10).
-1. Go to `C:\Users\yourname\.wp-cli` and put `config.yml` there.
-1. Edit the value in `config.yml` to fit your environment.
+## For Localhost
 
-## Project Setup
+We assume you are on Windows 10 machine and already have PHP localhost like [WAMP 32-bit](https://github.com/hrsetyono/wordpress/wiki/Installing-WAMP-on-Windows-10).
 
-1. Create a new directory for your project and put `composer.json` and `wp-cli.yml` inside.
+If you're on Mac, the difference is only on One-time Setup. For the localhost, I heard [MAMP](https://www.mamp.info/en/) is good.
 
-1. Edit the value in `wp-cli.yml` to fit your project.
+### One-time Setup
 
-1. Run the command `composer init-wp`.
+1. Install [Git](https://git-scm.com/downloads), [Composer 1.8](https://getcomposer.org/download/), and [WP-CLI 2.2](https://github.com/hrsetyono/wordpress/wiki/Installing-WP-CLI-on-Windows-10).
+1. Set global config by putting `config.yml` inside `C:\Users\yourname\.wp-cli`.
 
-## Live Server Setup (Optional)
+     You also need to edit it to fit your localhost environment.
 
-This allows you to install and migrate WordPress to your live server.
+### Project Setup:
 
-**Coming Soon**
+1. Create a new folder and a VirtualHost for your project.
+
+   > [How to create VirtualHost with WAMP »](https://github.com/hrsetyono/wordpress/wiki/Installing-WAMP-on-Windows-10#4-creating-virtual-host)
+
+1. Put `composer.json` and `wp-cli.local.yml` inside.
+
+1. Open `composer.json` and modify it to fit your project. The important parts are:
+
+    - `require` - The list of plugins and themes.
+    - `scripts` - The shortcut to run series of command. You need to edit the parameter of `local-init`.
+
+1. Run the command `composer local-init` to download and install WordPress.
+
+1. Done!
+
+## For Live Server
+
+First thing first: your server needs to support **SSH Access**.
+
+Good? Let's see how to set it up:
+
+### One-time Setup:
+
+1. Install Composer and WP-CLI on your server.
+
+    > Ask your customer service on how to do it.
+
+1. Upload `config.yml` to `.wp-cli/` folder of your server. Edit it to fit your environment.
+
+### Project Setup:
+
+1. Open `wp-cli.local.yml` and change the `@live` SSH address to yours.
+
+    - This allows you to remotely run WP-CLI command by adding the alias like this: `wp @live --info`.
+
+    - The `path` starts from where you land when connecting via SSH.
+
+    - **NOTE**: In Windows, you need to use Git Bash for remote-command. Which should be installed together with Git.
+
+1. Open `composer.json` and edit the `live-init` part. Then, upload it to your project directory.
+
+1. Run the command `wp @live ${ composer live-init } -` to download and install WordPress in your server.
+
+1. Done!

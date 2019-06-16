@@ -15,6 +15,11 @@ core install:
   admin_password: my-wp-password
   admin_email: my-wp-email@gmail.com
 
+
+# Skip the default theme and plugins when downloading wordpress
+core download:
+  skip-content: 1
+
 # Ignore this
 disabled_commands:
   - db drop

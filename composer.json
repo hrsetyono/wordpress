@@ -24,19 +24,23 @@
     "wpackagist-theme/storefront": "*"
   },
   "scripts": {
-    "init-wp": [
+    "local-init": [
       "composer update",
-      "wp core download --skip-content",
-      "wp config create",
+      "wp core download",
+      "wp config create --dbname=your_site",
       "wp db create",
-      "wp core install"
+      "wp core install --url=yoursite.test --title='Your Site'"
+    ],
+    "live-update-plugins": [
+      "wp @live $(composer update) -"
     ],
     "live-init": [
-      "wp @live $(composer init-wp) cli version"
-    ],
-    "live-update": [
-      "wp @live $(composer update) cli version"
-    ],
+      "composer update",
+      "wp core download",
+      "wp config create --dbname=your_live_site",
+      "wp db create",
+      "wp core install --url=yoursite.com --title='Your Live Site'"
+    ]
   },
   "repositories": [
     { "type": "composer", "url":"https://wpackagist.org" }
