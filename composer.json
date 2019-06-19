@@ -31,7 +31,7 @@
       "wp db create",
       "wp core install --url=yoursite.test --title='Your Site'"
     ],
-    "live-update-plugins": [
+    "live-update": [
       "wp @live $(composer update) -"
     ],
     "live-init": [
