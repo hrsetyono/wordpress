@@ -1,21 +1,22 @@
 {
-  "name": "pixelstudio/your-site",
-  "description": "Run the command `composer init-wp` to install and setup WordPress.",
+  "name": "pixelstudio/YOUR-REPO",
+  "description": "Run the command `composer wp-init` to install and setup WordPress.",
   "authors": [
     { "name": "Pixel Studio", "email": "info@pixelstudio.id", "homepage": "https://pixelstudio.id" }
   ],
   "require": {
-    "pixelstudio/edje-wp-library": "~3.0",
+    "pixelstudio/edje-wp-library": "~3.7",
     "pixelstudio/wp-sync-db": "~1.7",
+    "pixelstudio/wp-custy": "~1.1.0",
+    
     "wpackagist-plugin/jetpack": "*",
-    "wpackagist-plugin/gutenberg": "*",
     "wpackagist-plugin/timber-library": "~1.9.0",
     "wpackagist-plugin/autodescription": "*",
     "wpackagist-plugin/contact-form-7": "*",
     "wpackagist-plugin/w3-total-cache": "*",
 
-    "pixelstudio/edje-wp-theme": "~5.0",
-    "wpackagist-theme/twentynineteen": "*"
+    "pixelstudio/edje-wp-theme": "~6.0",
+    "wpackagist-theme/twentytwenty": "*"
   },
   "require-dev": {},
   "suggest": {
@@ -24,22 +25,12 @@
     "wpackagist-theme/storefront": "*"
   },
   "scripts": {
-    "local-init": [
+    "wp-init": [
       "composer update",
       "wp core download",
-      "wp config create --dbname=your_site",
+      "wp config create --dbname=LOCAL_DB",
       "wp db create",
-      "wp core install --url=yoursite.test --title='Your Site'"
-    ],
-    "live-update": [
-      "wp @live $(composer update) -"
-    ],
-    "live-init": [
-      "composer update",
-      "wp core download",
-      "wp config create --dbname=your_live_site",
-      "wp db create",
-      "wp core install --url=yoursite.com --title='Your Live Site'"
+      "wp core install --url=YOURSITE.test --title=\"LOCAL SITE NAME\""
     ]
   },
   "repositories": [
