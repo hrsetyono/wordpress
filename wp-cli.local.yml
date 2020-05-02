@@ -1,5 +1,0 @@
-@live:
-  ssh: username@your-server.com~/path/to/your-project
-
-@test:
-  ssh: henner@web561.webfaction.com~/webapps/pixelstudio_id_demo
