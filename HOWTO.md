@@ -1,4 +1,11 @@
-This is a guide that you can paste to your site's README explaining how to run the Composer.
+# Site Name
+
+Tested working on:
+
+- WordPress 5.4
+- PHP 7.3
+- MySQL 8.0
+- Server nginx
 
 ## Setup Guide
 
