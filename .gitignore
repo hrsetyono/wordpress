@@ -6,6 +6,7 @@ wp-includes/
 wp-content/*
 wp-content/themes/twentynineteen
 wp-content/themes/twentytwenty
+wp-content/themes/twentytwentyone
 !wp-content/themes/
 /*.php
 /.htaccess
@@ -14,6 +15,7 @@ wp-content/themes/twentytwenty
 /index.php
 
 # Others
+nginx.conf
 sql/
 *.Cache
 ClientBin/
