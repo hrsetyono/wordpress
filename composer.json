@@ -5,17 +5,16 @@
     { "name": "Pixel Studio", "email": "info@pixelstudio.id", "homepage": "https://pixelstudio.id" }
   ],
   "require": {
-    "pixelstudio/edje-wp-library": "~4.3.0",
+    "pixelstudio/edje-wp-library": "~6.0.0",
     "pixelstudio/wp-sync-db": "~1.7",
 	"pixelstudio/acf": "~5.9.4",
     
     "wpackagist-plugin/jetpack": "*",
-    "wpackagist-plugin/timber-library": "~1.18.0",
     "wpackagist-plugin/autodescription": "*",
     "wpackagist-plugin/contact-form-7": "~5.3.2",
     "wpackagist-plugin/w3-total-cache": "*",
 
-    "pixelstudio/edje-wp-theme": "~8.3.0",
+    "pixelstudio/edje-wp-theme": "~9.1.1",
     "wpackagist-theme/twentytwenty": "*"
   },
   "require-dev": {},
