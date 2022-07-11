@@ -1,0 +1,35 @@
+{
+  "name": "pixelstudio/your-site",
+  "description": "Run the command `composer wp-init` to install and setup WordPress.",
+  "authors": [
+    {
+      "name": "Pixel Studio",
+      "email": "info@pixelstudio.id",
+      "homepage": "https://pixelstudio.id"
+    }
+  ],
+  "require": {
+    "pixelstudio/edje-wp-library": "~8.0.5",
+    "pixelstudio/wp-sync-db": "~1.7",
+	  "pixelstudio/acf": "~5.12.2",
+    "pixelstudio/updraftplus": "*",
+    "wpackagist-plugin/autodescription": "*",
+    "wpackagist-plugin/contact-form-7": "*",
+    "wpackagist-plugin/w3-total-cache": "*",
+
+    "pixelstudio/edje-wp-theme": "~14.0.0",
+    "wpackagist-theme/twentytwentyone": "*",
+    "wpackagist-theme/twentytwentytwo": "*"
+  },
+  "require-dev": {},
+  "suggest": {
+    "pixelstudio/edje-wc-library": "~4.2.3",
+    "wpackagist-plugin/woocommerce": "*",
+    "wpackagist-theme/storefront": "*"
+  },
+  "scripts": {},
+  "repositories": [
+    { "type": "composer", "url":"https://wpackagist.org" }
+  ],
+  "autoload": { "psr-0": { "Acme": "src/" } }
+}
