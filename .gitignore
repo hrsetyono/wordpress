@@ -9,6 +9,7 @@ wp-content/themes/twentytwenty
 wp-content/themes/twentytwentyone
 wp-content/themes/twentytwentytwo
 wp-content/themes/twentytwentythree
+wp-content/themes/storefront
 !wp-content/themes/
 /*.php
 /.htaccess
