@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "pixelstudio/edje-wp-library": "~9.4.1",
+    "pixelstudio/pixel-wp-library": "~5.9.0",
     "pixelstudio/wp-sync-db": "~1.7",
     "pixelstudio/acf": "~6.0.2",
     "pixelstudio/updraftplus": "*",
@@ -19,7 +19,7 @@
     "wpackagist-plugin/contact-form-7": "~5.6.4",
     "wpackagist-plugin/w3-total-cache": "*",
 
-    "pixelstudio/edje-wp-theme": "~14.4.0",
+    "pixelstudio/pixel-wp-theme": "~5.9.0",
     "wpackagist-theme/twentytwentyone": "*",
     "wpackagist-theme/twentytwentytwo": "*"
   },

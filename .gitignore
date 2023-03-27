@@ -4,6 +4,7 @@ vendor/
 wp-admin/
 wp-includes/
 wp-content/*
+wp-content/themes/index.php
 wp-content/themes/twentynineteen
 wp-content/themes/twentytwenty
 wp-content/themes/twentytwentyone
