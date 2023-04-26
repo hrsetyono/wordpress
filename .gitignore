@@ -10,12 +10,14 @@ wp-content/themes/twentytwenty
 wp-content/themes/twentytwentyone
 wp-content/themes/twentytwentytwo
 wp-content/themes/twentytwentythree
+wp-content/themes/twentytwentyfour
 wp-content/themes/storefront
 !wp-content/themes/
 /*.php
 /.htaccess
 /wp-cli.local.yml
 /composer.lock
+package-lock.json
 /index.php
 
 # Others

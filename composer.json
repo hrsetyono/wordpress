@@ -9,9 +9,9 @@
     }
   ],
   "require": {
-    "pixelstudio/pixel-wp-library": "~5.9.0",
+    "pixelstudio/pixel-wp-library": "~6.2.0",
     "pixelstudio/wp-sync-db": "~1.7",
-    "pixelstudio/acf": "~6.0.2",
+    "pixelstudio/acf": "~6.1.3",
     "pixelstudio/updraftplus": "*",
 
     "wpackagist-plugin/wp-downgrade": "*",
@@ -19,14 +19,14 @@
     "wpackagist-plugin/contact-form-7": "~5.6.4",
     "wpackagist-plugin/w3-total-cache": "*",
 
-    "pixelstudio/pixel-wp-theme": "~5.9.0",
-    "wpackagist-theme/twentytwentyone": "*",
-    "wpackagist-theme/twentytwentytwo": "*"
+    "pixelstudio/pixel-wp-theme": "~6.2.0",
+    "wpackagist-theme/twentytwentytwo": "*",
+    "wpackagist-theme/twentytwentythree": "*"
   },
   "require-dev": {},
   "suggest": {
-    "pixelstudio/edje-wc-library": "~4.3.1",
-    "wpackagist-plugin/woocommerce": "~7.1.0",
+    "pixelstudio/pixel-woo-library": "~7.6.0",
+    "wpackagist-plugin/woocommerce": "~7.6.0",
     "wpackagist-theme/storefront": "*"
   },
   "scripts": {},
